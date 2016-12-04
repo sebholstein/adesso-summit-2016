@@ -1,0 +1,9 @@
+<md-card *ngFor="let entry of scheduleEntries" class="schedule-entry">
+  <md-card-title-group>
+    <md-card-title>{{ entry.title }}</md-card-title>
+    <md-card-subtitle>{{ entry.speaker }}</md-card-subtitle>
+  </md-card-title-group>
+  <md-card-content>
+    <span class="badge">Start: {{ entry.start }} Uhr</span> <span class="badge">Kino {{ entry.cinemaHall }}</span> <span class="badge">{{ entry.category }}</span>
+  </md-card-content>
+</md-card>

@@ -1,0 +1,121 @@
+[
+  {
+    "title": "Kapitalmarktregulation – Warum MiFID II eine Chance für das CRM von Banken ist",
+    "speaker": "Marcus Oelschleger",
+    "start": "11:05",
+    "category": "Aus den Branchen",
+    "cinemaHall": 1
+  },
+  {
+    "title": "Seven Basic Quality Tools",
+    "speaker": "Patrick Raffelberg",
+    "start": "11:05",
+    "category": "Sanieren und Testen",
+    "cinemaHall": 2
+  },
+  {
+    "title": "Agil von \"Null Ahnung\" zu \"etwas IoT\"",
+    "speaker": "Jan Stieglitz und Torben Mader",
+    "start": "11:05",
+    "category": "Digitalisierung 1",
+    "cinemaHall": 4
+  },
+  {
+    "title": " Einfachheit ist das Resultat der Reife – Software-Architektur für optimale User Experience Beyond Agile – Antifragilität in der Softwareentwicklung",
+    "speaker": "Gerrit Beine und Sabrina Kohlhase",
+    "start": "11:05",
+    "category": "Kreatives",
+    "cinemaHall": 8
+  },
+  {
+    "title": "Blitzschnell In-Memory Computing mit GigaSpaces XAP",
+    "speaker": "Björn Fischer",
+    "start": "11:05",
+    "category": "Anwendungsgrundlagen",
+    "cinemaHall": 9
+  },
+  {
+    "title": "Bingo-Relaunch: Eine hochskalierbare Web-Anwendung auf Basis von Angular, Node.js und JEE",
+    "speaker": "Karl-Heinz Wieland und Christian Unger ",
+    "start": "11:05",
+    "category": "Frontend",
+    "cinemaHall": 11
+  },
+  {
+    "title": "adesso goes \"Maklerverwaltungsprogramm\"",
+    "speaker": "Lars Benthin und Carsten Voigtländer",
+    "start": "11:45",
+    "category": "Aus den Branchen",
+    "cinemaHall": 1
+  },
+  {
+    "title": "Big Test Data - wie man 15.000 Arztrechnungen in 54 Sekunden erhält",
+    "speaker": "Stephan Wacker",
+    "start": "11:45",
+    "category": "Sanieren und Testen",
+    "cinemaHall": 2
+  },
+  {
+    "title": "Einaml Praxis und zurück",
+    "speaker": "Stefan Dörries, Berthe Emmanuelle Kamga Monayoum, Marcel Kroner, Etienne Sandjon, Susanne Totz, Simon Voigt",
+    "start": "11:45",
+    "category": "Digitalisierung 1",
+    "cinemaHall": 4
+  },
+  {
+    "title": "Fünf Gründe mit dem Kunden Lego zu spielen",
+    "speaker": "Oliver Hehlert und Kim Lauenroth",
+    "start": "11:45",
+    "category": "Kreatives",
+    "cinemaHall": 8
+  },
+  {
+    "title": "PayPal meets Helvetia",
+    "speaker": "",
+    "start": "11:45",
+    "category": "Anwendungsgrundlagen",
+    "cinemaHall": 9
+  },
+  {
+    "title": "Bot, Bot, Bot… Das Microsoft Botframework im Check",
+    "speaker": "Fabian Höger",
+    "start": "13:45",
+    "category": "Microsoft",
+    "cinemaHall": 1
+  },
+  {
+    "title": "Erfahrungen aus interkulturellen Projekten",
+    "speaker": "Eric Hambuch",
+    "start": "13:45",
+    "category": "und sonst...",
+    "cinemaHall": 2
+  },
+  {
+    "title": " Der Digital Workplace – echte Innovation oder die Weiterentwicklung des Intranets?",
+    "speaker": "Christian Ahrenkiel",
+    "start": "13:45",
+    "category": "Digitalisierung 2",
+    "cinemaHall": 4
+  },
+  {
+    "title": "Reaktive Programmierung mit RxJava in der Praxis",
+    "speaker": "Christian Lambert",
+    "start": "13:45",
+    "category": "Programmieren",
+    "cinemaHall": 8
+  },
+  {
+    "title": "Continious Delivery kann jeder",
+    "speaker": "Matthias Balke und Sebastian Laag",
+    "start": "13:45",
+    "category": "Agile",
+    "cinemaHall": 9
+  },
+  {
+    "title": "Projektalltag: Testen von Microservices mit Maik, dem Microservice",
+    "speaker": "Michael Boehnke",
+    "start": "13:45",
+    "category": "Services",
+    "cinemaHall": 11
+  }
+]

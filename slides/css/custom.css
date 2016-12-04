@@ -1,0 +1,40 @@
+.blink_text {
+  animation:1s blinker linear infinite;
+  -webkit-animation:1s blinker linear infinite;
+  -moz-animation:1s blinker linear infinite;
+  color: red;
+}
+
+@-moz-keyframes blinker {  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+#users-online-list {
+  text-align: left;
+  list-style: none;
+  font-size: 16px;
+  transition: all 3s ease-in-out;
+}
+
+#users-online-list li {
+  float: left;
+  background: #c30e2e;
+  padding: 7px;
+  color: white;
+  margin-right: 9px;
+  margin-bottom: 3px;
+}

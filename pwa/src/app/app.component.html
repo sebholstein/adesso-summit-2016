@@ -1,0 +1,12 @@
+<md-toolbar color="primary" class="toolbar">
+  <span>SummIT PWA</span>
+  <span class="fill-remaining-space"></span>
+  <span class="connection-state">
+    <span *ngIf="(connectionState$ | async) === 'OPEN'">👍🏼</span>
+    <span *ngIf="(connectionState$ | async) !== 'OPEN'">👎</span>
+  </span>
+</md-toolbar>
+
+<div class="app-content">
+  <router-outlet></router-outlet>
+</div>

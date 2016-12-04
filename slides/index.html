@@ -11,34 +11,7 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<style type="text/css">
-			.blink_text {
-				animation:1s blinker linear infinite;
-				-webkit-animation:1s blinker linear infinite;
-				-moz-animation:1s blinker linear infinite;
-				color: red;
-			}
-
-			@-moz-keyframes blinker {  
-			0% { opacity: 1.0; }
-			50% { opacity: 0.0; }
-			100% { opacity: 1.0; }
-			}
-
-			@-webkit-keyframes blinker {  
-			0% { opacity: 1.0; }
-			50% { opacity: 0.0; }
-			100% { opacity: 1.0; }
-			}
-
-			@keyframes blinker {  
-			0% { opacity: 1.0; }
-			50% { opacity: 0.0; }
-			100% { opacity: 1.0; }
-			}
-
-		</style>
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -174,10 +147,14 @@
 					<img src="media/qr-pwa.jpg" alt="" class="stretch">
 				</section>
 				<section>
-					<h1>Wer ist online?</h1>
+					<h3>Wer ist online? - Aktuell <span class="users-online">0</span></h3>
 					<p>http://bit.ly/summit-pwa</p>
-					<div id="online-chart">
-					</div>
+					<div id="users-online-list"></div>
+
+				</section>
+
+				<section id="slide-deviceorientation">
+					DeviceOrientation
 				</section>
 			</div>
 		</div>
@@ -201,6 +178,7 @@
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'node_modules/deepstream.io-client-js/dist/deepstream.js' },
+					{ src: 'js/smoothie.js' },
 					{ src: 'js/app.js', async: true }
 				]
 			});

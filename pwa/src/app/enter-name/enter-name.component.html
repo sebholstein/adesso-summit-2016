@@ -1,0 +1,13 @@
+<form novalidate (submit)="login($event)">
+<md-card class="app-input-section">
+  <h3>Bitte ausfüllen 😎</h3>
+  <md-input placeholder="Vorname & Nachname" maxlength="40"
+            value=""
+            #fullName>
+    <md-hint align="end">{{fullName.characterCount}} / 40</md-hint>
+  </md-input>
+  <div>
+    <button md-raised-button color="primary" class="save-button">Speichern</button>
+  </div>
+</md-card>
+</form>
