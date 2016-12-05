@@ -7,6 +7,8 @@ class DeepstreamDemo {
     this.smoothieLine = null;
     this._startUserCounterWatcher();
     this._startDeviceOrientationWatcher();
+    this._speechWatcher();
+    this._webAudioWatcher();
   }
 
   _startUserCounterWatcher() {
@@ -44,6 +46,21 @@ class DeepstreamDemo {
       }
       li.textContent = user.substr(0, 40);
       this.usersListElement.appendChild(li);
+    }
+  }
+
+  _speechWatcher() {
+    const textInput = document.querySelector('#speech-text');
+    const rateInput = document.querySelector('#speech-rate');
+    const pitchInput = document.querySelector('#speech-pitch');
+    document.querySelector('#start-speak').onclick = () => {
+      client.event.emit(`command/speak`, {text: textInput.value, rate: rateInput.value, pitch: pitchInput.value});
+    }
+  }
+
+  _webAudioWatcher() {
+    document.querySelector('#start-web-audio').onclick = () => {
+      client.event.emit(`command/webAudio`);
     }
   }
 

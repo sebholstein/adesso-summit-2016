@@ -1,18 +1,25 @@
+import { WebAudioDialogComponent } from './web-audio-dialog/web-audio-dialog.component';
+import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
 import { Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/publishBehavior';
 import { Subscription } from 'rxjs/Subscription';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Injectable()
 export class DeepstreamService {
   client: any;
   username: string;
   private _connectionState$: BehaviorSubject<string> = new BehaviorSubject('CLOSED')
+  private _onConnect$: Observable<any> = new Observable();
+  speechDialogRef: MdDialogRef<SpeechDialogComponent>;
+  webAudioDialogRef: MdDialogRef<WebAudioDialogComponent>;
 
-  constructor(private _zone: NgZone) { 
+  constructor(private _zone: NgZone, public dialog: MdDialog) { 
     this.username = window.localStorage.getItem('deepstream_username') || '';
   }
 
@@ -20,24 +27,33 @@ export class DeepstreamService {
     return this.username != null && this.username.length > 0; 
   }
 
-  connect(username: string = '') {
+  connect(username: string = ''): Promise<any> {
     if (username != null && username.length > 0 && username !== this.username) {
       this.username = username;
     }
     window.localStorage.setItem('deepstream_username', this.username);
     this.client = deepstream(`${window.location.hostname}:6020`);
     const creds = {username: this.username, password: '1234'};
-    this.client.login(creds, () => {
-      this._trackConnectionState();
-      this._publishBrowserDetails();
-      this._laughListener();
-      if ('vibrate' in navigator) {
-        this._vibrateListener();
-      }
-      if ('DeviceOrientationEvent' in window) {
-        this._deviceOrientationListener();
-      }
-    });
+    return new Promise((resolve) => {
+      this.client.login(creds, () => {
+        resolve(this.client);
+        this._trackConnectionState();
+        this._publishBrowserDetails();
+        this._laughListener();
+        if ('vibrate' in navigator) {
+          this._vibrateListener();
+        }
+        if ('DeviceOrientationEvent' in window) {
+          this._deviceOrientationListener();
+        }
+        if ('SpeechSynthesisUtterance' in window) {
+          this._speechSynthesisUtteranceListener();
+        }
+        if ('AudioContext' in window || 'webkitAudioContext' in window) {
+          this._webAudioListener();
+        }
+      });
+    })
   }
 
   private _trackConnectionState() {
@@ -47,18 +63,46 @@ export class DeepstreamService {
     })
   }
 
-  get connectionState$(): Observable<string> {
-    return this._connectionState$.asObservable().distinctUntilChanged();
-  }
-
   private _publishBrowserDetails() {
     this.client.record.getRecord(`browserDetails/${this.username}`).whenReady((record) => {
       record.set({
         serviceWorker: 'serviceWorker' in navigator,
         vibrate: 'vibrate' in navigator,
-        deviceOrientation: 'DeviceOrientationEvent' in window
+        deviceOrientation: 'DeviceOrientationEvent' in window,
+        speechSynthesis: 'SpeechSynthesisUtterance' in window,
+        webAudio: 'AudioContext' in window || 'webkitAudioContext' in window
       });
     })
+  }
+
+  get connectionState$ () {
+    return this._connectionState$.asObservable();
+  } 
+
+  private _speechSynthesisUtteranceListener() {
+    this.client.event.subscribe(`command/speak`, (data) => {
+      if (this.speechDialogRef != null) {
+        this.speechDialogRef.close();
+      }
+      (<any>window).speakMessage = data;
+
+      this.speechDialogRef = this.dialog.open(SpeechDialogComponent, {
+        disableClose: false
+      });
+    });
+  }
+
+  private _webAudioListener() {
+    this.client.event.subscribe(`command/webAudio`, (data) => {
+      if (this.webAudioDialogRef != null) {
+        this.webAudioDialogRef.close();
+      }
+      (<any>window).speakMessage = data;
+
+      this.webAudioDialogRef = this.dialog.open(WebAudioDialogComponent, {
+        disableClose: false
+      });
+    });
   }
 
   private _laughListener() {
@@ -84,7 +128,7 @@ export class DeepstreamService {
       })
     });
 
-    this.client.record.subscribe(`command/startDeviceOrientation`, () => {
+    this.client.event.subscribe(`command/startDeviceOrientation`, () => {
       if (s != null) {
         s.unsubscribe();
       }

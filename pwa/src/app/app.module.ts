@@ -6,6 +6,8 @@ import { MaterialModule } from '@angular/material'
 
 import { AppComponent } from './app.component';
 import { EnterNameComponent } from './enter-name/enter-name.component';
+import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
+import { WebAudioDialogComponent } from './web-audio-dialog/web-audio-dialog.component';
 
 const routes: Routes = [
   {path: '', component: EnterNameComponent},
@@ -15,7 +17,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    EnterNameComponent
+    EnterNameComponent,
+    SpeechDialogComponent,
+    WebAudioDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +28,10 @@ const routes: Routes = [
   ],
   providers: [
     DeepstreamService
+  ],
+  entryComponents: [
+    SpeechDialogComponent,
+    WebAudioDialogComponent
   ],
   bootstrap: [AppComponent]
 })
