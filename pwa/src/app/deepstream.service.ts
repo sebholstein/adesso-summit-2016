@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { WebAudioDialogComponent } from './web-audio-dialog/web-audio-dialog.component';
 import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
 import { Injectable, NgZone } from '@angular/core';
@@ -5,8 +6,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/operator/skipWhile';
 import 'rxjs/add/operator/publishBehavior';
+import 'rxjs/add/operator/distinctUntilChanged';
 import { Subscription } from 'rxjs/Subscription';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
@@ -122,15 +125,33 @@ export class DeepstreamService {
 
   private _deviceOrientationListener() {
     let s: Subscription;
-    this.client.event.subscribe(`command/startDeviceOrientation`, () => {
+    this.client.event.subscribe(`command/startDeviceOrientation`, (data) => {
       this.client.record.getRecord(`deviceOrientation/${this.username}`).whenReady(record => {
-        s = Observable.fromEvent<Event>(window, 'deviceorientation').debounceTime(100).subscribe();
+        this.client.record.getList('deviceOrientations').whenReady(list => {
+          if (list.getEntries().indexOf(this.username) === -1) {
+            list.addEntry(`deviceOrientation/${this.username}`);
+          }
+          let a = false;
+          s = Observable.fromEvent<DeviceOrientationEvent>(window, 'deviceorientation')
+            .throttleTime(350)
+            .skipWhile((e) => e == null || e.alpha == null)
+            .distinctUntilChanged()
+            .subscribe((e) => {
+              record.set({
+                alpha: e.alpha,
+                beta: e.beta,
+                gamma: e.gamma
+              });
+            });
+        });
       })
     });
 
-    this.client.event.subscribe(`command/startDeviceOrientation`, () => {
+
+    this.client.event.subscribe(`command/stopDeviceOrientation`, () => {
       if (s != null) {
         s.unsubscribe();
+        s = null;
       }
     });
   }

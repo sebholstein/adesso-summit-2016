@@ -32,8 +32,7 @@
 					<h4>adesso SummIT 2016</h4>
 				</section>
 				<section>
-					- Aktuelles mobile web
-					- Video PWA
+					- Aktueller Stand Mobile Web
 					- App Manifest
 						- Install to home screen
 					- AOT Compilation
@@ -52,17 +51,16 @@
 							- ngc
 					- APIs, die heute verwendbar sind
 						- Vibration API
-						- Acceleration
-						- Web Audio (mute on slide)
+						- DeviceOrientation API
+						- Web Audio
 				</section>
 				<section>
 					<img src="media/gif-what.gif" alt="What?" style="width: 400px">
 					<h2>Was sind Progressive Web Apps?</h2>
 				</section>
 				<section>
-					<h1>Buzzword</h1>
-					<iframe src="https://giphy.com/embed/3oEdvbpl0X32bXD2Vi" width="480" height="306" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-					<h2>Gut für <br />Consultants & Sales 😛</h2>
+					<h1>Buzzword!</h1>
+					<iframe src="https://giphy.com/embed/3oEdvbpl0X32bXD2Vi" width="580" height="406" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 				</section>
 				<section>
 					<h1>UX<br /> User experience</h1>
@@ -111,14 +109,22 @@
 					<iframe src="https://giphy.com/embed/14aUO0Mf7dWDXW" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 				</section>
 				<section>
-					<h1>SPON iPhone App</h1>
+					<h2>SPON iPhone App</h2>
 					<img src="media/spon-app.PNG" alt=""  style="height: 400px">
 				</section>
 				<section>
-					<h1>SPON iPhone App - Offline</h1>
+					<h2>SPON iPhone App - Offline</h2>
 					<img src="media/spon-app-offline.PNG" alt=""  style="height: 400px">
 				</section>
 				<section>
+					<h2>SPON iPhone App - 16,6 MB</h2>
+					<img src="media/spon-mb.PNG" alt=""  style="height: 400px">
+				</section>
+				<section>
+					<h2>LinkedIn iPhone App - 138MB !!!</h2>
+					<img src="media/linkedin-mb.PNG" alt="" style="max-height: 450px" >
+				</section>
+				<section data-background-color="#0d4b74">
 					<h1>Das geht besser...</h1>
 				</section>
 				<section>
@@ -153,19 +159,73 @@
 
 				</section>
 
+				<section>
+					<h3>DeviceOrientation API</h3>
+					<ul>
+						<li>Für Spiele besonders nützlich</li>
+						<li>Keine gesonderten Berechtigungen notwending</li>
+					</ul>
+					<pre><code data-trim data-noescape>
+								window.addEventListener('deviceorientation', (event) => {
+	console.log(event.alpha);
+	console.log(event.beta);
+	console.log(event.gamma);
+});</code></pre>
+				</section>
+
+				<section>
+					<h3>DeviceOrientation API</h3>
+					<div class="support-chart" data-feature="deviceOrientation">
+
+					</div>
+				</section>
+
 				<section id="slide-deviceorientation">
-					DeviceOrientation
+					<h3>DeviceOrientation Demo</h3>
+					<div id="device-orientation-entries">
+					</div>
+				</section>
+
+				<section>
+					<h2>Speech Synthesis API</h2>
+					<ul>
+						<li>Text-to-Speech</li>
+						<li>Viele Sprachen unterstüzt</li>
+						<li>Internetverbindung notwendig</li>
+					</ul>
 				</section>
 
 				<section id="slide-speech">
 					<h2>Speech Synthesis API</h2>
-					Text: <input type="text" value="Halloooooo" id="speech-text"><br />
-					Pitch: <input type="number" value="2" id="speech-pitch"><br />
+					
+					Text: <input type="text" value="Das ist ein Test." id="speech-text"><br />
+					Pitch: <input type="number" value="1" id="speech-pitch"><br />
 					Rate: <input type="number" value="1" id="speech-rate"><br />
 					<button id="start-speak" type="button">Senden</button>
 				</section>
 				<section>
+					<h2>WebAudio API</h2>
 					<button type="button" id="start-web-audio">Start WebAudio</button>
+				</section>
+
+				<section>
+					App manifest
+				</section>
+
+				<section>
+					splash scren
+				</section>
+
+				<section>
+					250 kb Grenze
+				</section>
+
+				<section>
+					service worker und Synchronisierung
+				</section>
+
+				<section>
+					AOT router und Angular CLI
 				</section>
 			</div>
 		</div>

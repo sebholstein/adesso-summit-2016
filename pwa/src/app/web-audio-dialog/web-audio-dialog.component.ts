@@ -19,14 +19,25 @@ export class WebAudioDialogComponent implements OnInit {
     let oscillator = ctx.createOscillator();
     let gainNode = ctx.createGain();
 
-    oscillator.type = 'square';
-
     gainNode.connect(ctx.destination);
     oscillator.connect(gainNode);
+    oscillator.frequency.value = 523.25; // C5
+
+    let oscillator2 = ctx.createOscillator();
+    oscillator2.connect(gainNode);
+    oscillator2.frequency.value = 659.25; // E5
+
+    let oscillator3 = ctx.createOscillator();
+    oscillator3.connect(gainNode);
+    oscillator3.frequency.value = 783.99; // G5
 
     oscillator.start(0);
+    oscillator2.start(0);
+    oscillator3.start(0);
     setTimeout(() => {
       oscillator.stop();
+      oscillator2.stop();
+      oscillator3.stop();
     }, 1500);
   }
 

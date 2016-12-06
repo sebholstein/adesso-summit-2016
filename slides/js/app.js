@@ -65,11 +65,40 @@ class DeepstreamDemo {
   }
 
   _startDeviceOrientationWatcher() {
-    Reveal.addEventListener('slidechanged', function( event ) {
-      if (event.currentSlide.id === 'slide-deviceorientation') {
-        this.client.emit('command/startDeviceOrientation');
-      } else {
+    const container = document.querySelector('#device-orientation-entries');
+    let subs = new Map();
+    let listChanged = (entries) => {
+      for (var i = 0; i < entries.length; i++) {
+        if (subs.has(entries[i])) {
+          continue;
+        }
+        
+        let elem = document.createElement('div');
+        elem.style = 'background: red; height: 45px; margin-right: 10px; float: left'
+        elem.textContent = entries[i].split('/')[1];
+        container.appendChild(elem);
+        const sub = (e) => {
 
+          elem.style.webkitTransform = "rotate("+ e.gamma +"deg) rotate3d(1,0,0, "+ (e.beta*-1+90)+"deg)";
+        }
+        client.record.getRecord(entries[i]).subscribe(null, sub);
+        subs.set(entries[i], sub);
+      }
+    }
+    var currentSlideIsDo = false;
+    Reveal.addEventListener('slidechanged', (event) => {
+      if (event.currentSlide.id === 'slide-deviceorientation') {
+        currentSlideIsDo = true;
+        client.record.getList('deviceOrientations').whenReady((list) => {
+          list.subscribe(listChanged, true);
+        });
+        client.event.emit('command/startDeviceOrientation');
+      } else if (currentSlideIsDo) {
+        client.event.emit('command/stopDeviceOrientation');
+        currentSlideIsDo = false;
+        client.record.getList('deviceOrientations').whenReady((list) => {
+          list.delete();
+        });
       }
     });
   }
