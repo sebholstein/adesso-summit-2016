@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Progressive Web Apps mit Angular 2 | SummIT 2016</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -25,7 +25,7 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
+				<section data-background-image="media/slide-bg.png">
 					<img src="media/angular.png" alt="Angular" style="border:0; background: 0; box-shadow: none">
 					<h1><span style="font-size:.93em">PROGRESSIVE WEB APPS</span> <br />MIT ANGULAR 2</h1>
 					<h3>Sebastian Müller - @Sebamueller</h3>
@@ -75,7 +75,7 @@
 						<li>Offline-fähigkeit (News auch offline lesen)</li>
 						<li>Push Notifications</li>
 						<li>"App-Feeling" (App Icon, Fullscreen Modus)</li>
-						<li>HTTPS / HTTP 2</li>
+						<li>HTTPS / HTTP2</li>
 						<li>Hardware APIs nutzen</li>
 					</ul>
 				</section>
@@ -102,11 +102,8 @@
 					<img src="media/spon-assets.png" alt="">
 				</section>
 				<section>
-					<h1>Cookie Hell (1kb Cookies/Request)</h1>
+					<h2>Cookie Hell <br />(1kb Cookies/Request)</h2>
 					<img src="media/spon-cookies.png" alt="">
-				</section>
-				<section>
-					<iframe src="https://giphy.com/embed/14aUO0Mf7dWDXW" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 				</section>
 				<section>
 					<h2>SPON iPhone App</h2>
@@ -122,50 +119,189 @@
 				</section>
 				<section>
 					<h2>LinkedIn iPhone App - 138MB !!!</h2>
-					<img src="media/linkedin-mb.PNG" alt="" style="max-height: 450px" >
+					<img src="media/linkedin-mb.PNG" alt="" style="max-height: 450px">
+				</section>
+				<section>
+					<iframe src="https://giphy.com/embed/14aUO0Mf7dWDXW" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 				</section>
 				<section data-background-color="#0d4b74">
 					<h1>Das geht besser...</h1>
 				</section>
+
+				<section data-background-image="media/slide-bg.png">
+					<h1>Progressive Web App mit Angular 2</h1>
+				</section>
+
 				<section>
+					<h1 style="margin-top: 0;margin-bottom:0;padding-top:0;padding-bottom:0">PWA DEMO</h1>
+					<h3 class="blink_text" style='font-family:"Comic Sans","Comic Sans MS","Chalkboard","ChalkboardSE-Regular","Marker Felt","Purisa","URW Chancery L",cursive,sans-serif; color: yellow;margin-top: 0;margin-bottom:0;padding-top:0;padding-bottom:0'>Jetzt aufrufen!</h3>
+					<div class="blink_text" style='font-family:"Comic Sans","Comic Sans MS","Chalkboard","ChalkboardSE-Regular","Marker Felt","Purisa","URW Chancery L",cursive,sans-serif; color: yellow;margin-top: 0;margin-bottom:0;padding-top:0;padding-bottom:0'>Lautsprecher an!</div>
+					<p><img src="media/drudgesiren.gif" alt="" style="border:0;background:0; height: 70px;margin:0;margin-bottom: -15px;box-shadow:none;"> http://bit.ly/summit-pwa <img src="media/drudgesiren.gif" style="border:0;background:0; height: 70px;margin:0;margin-bottom: -15px;box-shadow:none;" alt=""></p>
+					<img src="media/qr-pwa.jpg" alt="" class="stretch">
+				</section>
+
+				<section>
+					<img src="media/pwa-demo-screenshot.png" alt="">
+				</section>
+				<section data-background-image="media/slide-bg.png">
+					<h3>Wer ist online? - Aktuell <span class="users-online">0</span></h3>
+					<p>http://bit.ly/summit-pwa</p>
+					<div id="users-online-list"></div>
+				</section>
+
+				<section  data-background-image="media/slide-bg.png">
 					<h1>Offline-fähigkeit</h1>
 				</section>
+
+				<section  data-background-image="media/slide-bg.png">
+					<h1>Service Worker</h1>
+				</section>
+
 				<section>
 					<h1>Service Worker</h1>
 					<ul>
 						<li>JS basierter "Proxy für Websites"</li>
 						<li>Läuft in einem separaten Thread</li>
-						<li>Läuft auch, wenn die Seite oder der Browser gerade nicht offen ist*</li>
+						<li>Läuft auch, wenn die Seite oder der Browser gerade nicht geöffnet ist*</li>
 						<li>
-							Weitere Features
+							Weitere Features:
 							<ul>
 								<li>Gezieltes Caching via JS Logik</li>
 								<li>Push Notifications</li>
-								<li>Synchronisierung</li>
+								<li>Synchronisierung*</li>
 							</ul>
 						</li>
+						<li>HTTPS zwingend notwendig</li>
 					</ul>
 				</section>
-				<section>
-					<h1 style="margin-top: 0;margin-bottom:0;padding-top:0;padding-bottom:0">PWA DEMO</h1>
-					<h3 class="blink_text" style='font-family:"Comic Sans","Comic Sans MS","Chalkboard","ChalkboardSE-Regular","Marker Felt","Purisa","URW Chancery L",cursive,sans-serif; color: yellow; line-height: 0.4em;margin-top: 0;margin-bottom:0;padding-top:0;padding-bottom:0'>Jetzt aufrufen!</h3>
-					<p><img src="media/drudgesiren.gif" alt="" style="border:0;background:0; height: 70px;margin:0;margin-bottom: -15px;box-shadow:none;"> http://bit.ly/summit-pwa <img src="media/drudgesiren.gif" style="border:0;background:0; height: 70px;margin:0;margin-bottom: -15px;box-shadow:none;" alt=""></p>
-					<img src="media/qr-pwa.jpg" alt="" class="stretch">
-				</section>
-				<section>
-					<h3>Wer ist online? - Aktuell <span class="users-online">0</span></h3>
-					<p>http://bit.ly/summit-pwa</p>
-					<div id="users-online-list"></div>
 
+				<section>
+					<h3>Service Worker installieren</h3>
+					<pre>
+						<code data-trim data-noescape>
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/sw.js').then(reg => {
+		// Registration was successful
+		console.log('ServiceWorker success');
+	}).catch(function(err) {
+		// registration failed :(
+		console.log('failed: ', err);
+	});
+}
+						</code>
+					</pre>
 				</section>
+
+				<section>
+					<h3>Service Worker - Caching</h3>
+					<pre>
+						<code data-trim data-noescape>
+var CACHE_NAME = 'my-site-cache-v1';
+var urlsToCache = [
+  '/',
+  '/styles/main.css',
+];
+
+self.addEventListener('install', function(event) {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
+});</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>Service Worker - fetch</h3>
+					<pre>
+						<code data-trim data-noescape>
+					self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
+});</code></pre>
+				</section>
+
+				<section>
+					<h1>Service Worker<br />=<br />Low Level API</h1>
+				</section>
+
+				<section>
+					<h3>Service Worker Precache <br />(sw-precache)</h3>
+					<small></small>
+					<ul>
+						<li>CLI Tool</li>
+						<li>Generiert Service Worker für Offline-Support</li>
+						<li>Cached alle Assets</li>
+						<li>Kombinierbar mit Gulp und Webpack</li>
+						<li>Erstellt MD5 hashes für Files</li>
+					</ul>
+
+					<pre><code data-trim data-noescape>
+sw-precache --root=dist --static-file-globs='dist/**/*.html'
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Service Worker Toolbox<br />(sw-toolbox)</h3>
+					<ul>
+						<li>Library für Service Worker</li>
+						<li>High Level API</li>
+						<li>Runtime Caching Support</li>
+						
+					</ul>
+					<pre><code data-trim data-noescape>
+// router
+toolbox.router.get(':foo/index.html', function(request, values) {
+  return new Response('Handled a request for ' + request.url +
+      ', where foo is "' + values.foo + '"');
+});
+
+// precaching
+toolbox.precache(['/index.html', '/site.css', '/images/logo.png']);
+</code></pre>
+				</section>
+
+				<section>
+					support chart
+				</section>
+
 				<section>
 					app shell
 				</section>
 
 				<section>
+					todo: random tone for web audio api
+				</section>
+
+				
+
+				<section data-background-image="media/slide-bg.png">
+					<h1>Browser API</h1>
+				</section>
+
+				<section>
 					<h3>DeviceOrientation API</h3>
 					<ul>
-						<li>Für Spiele besonders nützlich</li>
+						<li>Besonders nützlich für
+							<ul>
+								<li>Spiele</li>
+								<li>Parallax Effekte</li>
+							</ul>
+						</li>
+
 						<li>Keine gesonderten Berechtigungen notwending</li>
 					</ul>
 					<pre><code data-trim data-noescape>
@@ -179,7 +315,6 @@
 				<section>
 					<h3>DeviceOrientation API</h3>
 					<div class="support-chart" data-feature="deviceOrientation">
-
 					</div>
 				</section>
 
@@ -206,9 +341,58 @@
 					Rate: <input type="number" value="1" id="speech-rate"><br />
 					<button id="start-speak" type="button">Senden</button>
 				</section>
+
 				<section>
 					<h2>WebAudio API</h2>
 					<button type="button" id="start-web-audio">Start WebAudio</button>
+					todo: button in pwa erstellen
+				</section>
+
+				<section  data-background-image="media/slide-bg.png">
+					<h1>Performance Tipps</h1>
+				</section>
+
+				<section>
+					<h4>First Meaningful Paint Time</h4>
+					<img src="media/screenshots.png" alt="screenshots">
+				</section>
+
+				<section>
+					<video src="media/load-time-3g.mov" class="stretch" data-autoplay></video>
+				</section>
+
+				<section>
+					<h4>Lighthouse</h4>
+					<p><small>https://github.com/GoogleChrome/lighthouse</small></p>
+					<ul>
+						<li>Analyse-Tool für Progressive Web Apps</li>
+						<li>Wird entwickelt vom Google Chrome Team</li>
+						<li>Chrome Extension &amp; CLI</li>
+						<li>Der neue HTML Validator&#8482;</li>
+					</ul>
+				</section>
+
+				<section>
+					<img src="media/lighthouse.png" alt="">
+				</section>
+
+				<section>
+					<img src="media/lighthouse-cli.png" alt="">
+				</section>
+
+				<section>
+					<h3>HTTP/2 & GZip nutzen</h3>
+					<video src="media/http2.mov" class="stretch" data-autoplay></video>
+				</section>
+
+				<section>
+					250 kb Grenze
+				</section>
+
+				<section>
+					angular 2 router - lazy loading
+					preloading
+					AOT compilation
 				</section>
 
 				<section>
@@ -218,11 +402,7 @@
 				<section>
 					splash scren
 				</section>
-
-				<section>
-					250 kb Grenze
-				</section>
-
+				
 				<section>
 					service worker und Synchronisierung
 				</section>

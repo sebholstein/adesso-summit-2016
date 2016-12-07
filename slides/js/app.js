@@ -74,7 +74,7 @@ class DeepstreamDemo {
         }
         
         let elem = document.createElement('div');
-        elem.style = 'background: red; height: 45px; margin-right: 10px; float: left'
+        elem.style = 'background: red; height: 45px; margin-right: 10px; float: left; max-width: 150px; font-size: 25px;'
         elem.textContent = entries[i].split('/')[1];
         container.appendChild(elem);
         const sub = (e) => {

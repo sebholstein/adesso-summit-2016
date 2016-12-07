@@ -7,6 +7,10 @@ import { AppModule } from './app/';
 
 if (environment.production) {
   enableProdMode();
+
+  if ('serviceWorker' in navigator) {
+	  (<any>navigator).serviceWorker.register('/service-worker.js');
+  }
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);

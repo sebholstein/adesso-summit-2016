@@ -3,6 +3,7 @@ import { DeepstreamService } from './deepstream.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '@angular/material'
+import { AppShellModule } from '@angular/app-shell';
 
 import { AppComponent } from './app.component';
 import { EnterNameComponent } from './enter-name/enter-name.component';
@@ -24,7 +25,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(routes)
+    AppShellModule.runtime(),
+    RouterModule.forRoot(routes, {
+      useHash: true
+    })
   ],
   providers: [
     DeepstreamService

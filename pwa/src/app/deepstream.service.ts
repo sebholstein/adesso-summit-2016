@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { element } from 'protractor';
 import { WebAudioDialogComponent } from './web-audio-dialog/web-audio-dialog.component';
 import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
@@ -35,7 +36,12 @@ export class DeepstreamService {
       this.username = username;
     }
     window.localStorage.setItem('deepstream_username', this.username);
-    this.client = deepstream(`${window.location.hostname}:6020`);
+    let protocol = '';
+    if (environment.production) {
+      protocol = 'wss://';
+    }
+    console.info(`${protocol}${window.location.hostname}:6020`);
+    this.client = deepstream(`${protocol}${window.location.hostname}:6020`);
     const creds = {username: this.username, password: '1234'};
     return new Promise((resolve) => {
       this.client.login(creds, () => {

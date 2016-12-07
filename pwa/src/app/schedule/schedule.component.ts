@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/take';
 
-interface ScheduleEntry {
+export interface ScheduleEntry {
   title: string;
   start: string;
   category: string;

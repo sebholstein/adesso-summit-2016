@@ -4,7 +4,23 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'pwa-root',
-  templateUrl: './app.component.html',
+  template: `
+<md-toolbar color="primary" class="toolbar">
+  <span>SummIT PWA</span>
+  <span class="fill-remaining-space"></span>
+  <span class="connection-state">
+    <span *ngIf="(connectionState$ | async) === 'OPEN'">👍🏼</span>
+    <span *ngIf="(connectionState$ | async) !== 'OPEN'">👎</span>
+  </span>
+</md-toolbar>
+
+<md-spinner *shellRender></md-spinner>
+
+<div class="app-content">
+  <router-outlet>
+  </router-outlet>
+</div>
+  `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
