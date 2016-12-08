@@ -10,6 +10,10 @@ export class WebAudioDialogComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
+  }
+
+  playSound() {
     let ctx;
     if ((<any>window).AudioContext != null) {
       ctx = new (<any>window).AudioContext();

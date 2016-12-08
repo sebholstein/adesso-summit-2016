@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
   <span>SummIT PWA</span>
   <span class="fill-remaining-space"></span>
   <span class="connection-state">
-    <span *ngIf="(connectionState$ | async) === 'OPEN'">👍🏼</span>
-    <span *ngIf="(connectionState$ | async) !== 'OPEN'">👎</span>
+    <span *ngIf="(connectionState$ | async) === 'OPEN'">😀</span>
+    <span *ngIf="(connectionState$ | async) !== 'OPEN'">🙁</span>
   </span>
 </md-toolbar>
 

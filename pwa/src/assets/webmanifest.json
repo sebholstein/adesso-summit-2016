@@ -1,10 +1,38 @@
 {
   "name": "SummIT PWA",
   "short_name": "SummIT",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "description": "PWA Demo App für den SummIT 2016",
+  "description": "Angular 2 PWA Demo App - SummIT 2016",
+  "orientation": "portrait",
   "background_color": "#673ab7",
   "theme_color": "#673ab7",
-  "lang": "de"
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/assets/appicons/icon-messages-app-27x20@1x.png",
+      "sizes": "27x20",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/appicons/icon-messages-app-iPadAir-67x50@2x.png",
+      "sizes": "67x50",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/appicons/icon-messages-app-iPadAir-74x55@2x.png",
+      "sizes": "74x55",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/appicons/144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/appicons/icon-messages-app-store-1024x768.png",
+      "sizes": "1024x768",
+      "type": "image/png"
+    }
+  ]
 }

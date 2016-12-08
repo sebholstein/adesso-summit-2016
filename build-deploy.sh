@@ -1,4 +1,6 @@
 cd pwa
-ng build --prod --aot && ./node_modules/.bin/sw-precache --root=dist --static-file-globs='dist/**/*'
+rm -rf dist
+ng build --prod --aot && ./node_modules/.bin/sw-precache --config=sw-precache-config.js --verbose
+mv service-worker.js dist/
 cd ..
 ./deploy.sh

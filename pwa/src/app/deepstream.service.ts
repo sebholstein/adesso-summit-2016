@@ -48,7 +48,6 @@ export class DeepstreamService {
         resolve(this.client);
         this._trackConnectionState();
         this._publishBrowserDetails();
-        this._laughListener();
         if ('vibrate' in navigator) {
           this._vibrateListener();
         }
@@ -93,6 +92,9 @@ export class DeepstreamService {
       if (this.speechDialogRef != null) {
         this.speechDialogRef.close();
       }
+      if (this.webAudioDialogRef != null) {
+        this.webAudioDialogRef.close();
+      }
       (<any>window).speakMessage = data;
 
       this.speechDialogRef = this.dialog.open(SpeechDialogComponent, {
@@ -106,26 +108,14 @@ export class DeepstreamService {
       if (this.webAudioDialogRef != null) {
         this.webAudioDialogRef.close();
       }
+      if (this.speechDialogRef != null) {
+        this.speechDialogRef.close();
+      }
       (<any>window).speakMessage = data;
 
       this.webAudioDialogRef = this.dialog.open(WebAudioDialogComponent, {
         disableClose: false
       });
-    });
-  }
-
-  private _laughListener() {
-    var audio = document.createElement('audio');
-    audio.src = 'assets/laugh.mp3';
-    audio.preload = 'auto';
-    audio.volume = 1;
-
-    this.client.event.subscribe(`command/laugh/${this.username}`, () => {
-      audio.play();
-      setTimeout(() => {
-        audio.pause();
-        audio.currentTime = 0;
-      }, 2000);
     });
   }
 

@@ -31,36 +31,14 @@
 					<h3>Sebastian Müller - @Sebamueller</h3>
 					<h4>adesso SummIT 2016</h4>
 				</section>
-				<section>
-					- Aktueller Stand Mobile Web
-					- App Manifest
-						- Install to home screen
-					- AOT Compilation
-					- Universal rendering
-					- TTI
-					- FMP
-					- APP Shell
-						- Critical CSS PATH
-					- Service Worker
-						- tools zum erstellen
-					- Performance
-						- AOT in Angular 2
-						- Bundling / Tree Shaking / Minification
-							- Webpack
-							- Closure Compiler
-							- ngc
-					- APIs, die heute verwendbar sind
-						- Vibration API
-						- DeviceOrientation API
-						- Web Audio
-				</section>
+				
 				<section>
 					<img src="media/gif-what.gif" alt="What?" style="width: 400px">
 					<h2>Was sind Progressive Web Apps?</h2>
 				</section>
 				<section>
 					<h1>Buzzword!</h1>
-					<iframe src="https://giphy.com/embed/3oEdvbpl0X32bXD2Vi" width="580" height="406" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+					<img src="media/ape.gif" alt="" style="width: 550px;">
 				</section>
 				<section>
 					<h1>UX<br /> User experience</h1>
@@ -71,12 +49,12 @@
 				<section>
 					<h1>Darunter fällt</h1>
 					<ul>
-						<li>Performance</li>
 						<li>Offline-fähigkeit (News auch offline lesen)</li>
 						<li>Push Notifications</li>
 						<li>"App-Feeling" (App Icon, Fullscreen Modus)</li>
+						<li>Performance</li>
 						<li>HTTPS / HTTP2</li>
-						<li>Hardware APIs nutzen</li>
+						<li>Browser- und Hardware-APIs nutzen</li>
 					</ul>
 				</section>
 				<section>
@@ -122,7 +100,7 @@
 					<img src="media/linkedin-mb.PNG" alt="" style="max-height: 450px">
 				</section>
 				<section>
-					<iframe src="https://giphy.com/embed/14aUO0Mf7dWDXW" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+					<img src="media/panda.gif" alt="" style="width:600px">
 				</section>
 				<section data-background-color="#0d4b74">
 					<h1>Das geht besser...</h1>
@@ -175,10 +153,16 @@
 					</ul>
 				</section>
 
+				<section  data-background-image="media/slide-bg.png">
+					<h1>Service Worker Support</h1>
+					<h2 class="support-counter" data-feature="serviceWorker"></h2>
+				</section>
+
 				<section>
 					<h3>Service Worker installieren</h3>
 					<pre>
 						<code data-trim data-noescape>
+// app.js
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('/sw.js').then(reg => {
 		// Registration was successful
@@ -196,6 +180,7 @@ if ('serviceWorker' in navigator) {
 					<h3>Service Worker - Caching</h3>
 					<pre>
 						<code data-trim data-noescape>
+// sw.js
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
   '/',
@@ -250,11 +235,11 @@ self.addEventListener('install', function(event) {
 					</ul>
 
 					<pre><code data-trim data-noescape>
-sw-precache --root=dist --static-file-globs='dist/**/*.html'
+sw-precache --root=dist --static-file-globs='dist/**/*'
 </code></pre>
 				</section>
 
-				<section>
+				<!-- <section>
 					<h3>Service Worker Toolbox<br />(sw-toolbox)</h3>
 					<ul>
 						<li>Library für Service Worker</li>
@@ -272,21 +257,63 @@ toolbox.router.get(':foo/index.html', function(request, values) {
 // precaching
 toolbox.precache(['/index.html', '/site.css', '/images/logo.png']);
 </code></pre>
+				</section> -->
+			
+
+				<section  data-background-image="media/slide-bg.png">
+					<h1>Web App Manifest</h1>
 				</section>
 
 				<section>
-					support chart
+					<h3>Web App Manifest</h3>
+					<pre><code data-trim data-noescape>
+{
+  "name": "SummIT PWA",
+  "short_name": "SummIT",
+  "start_url": "/",
+  "display": "standalone",
+  "description": "PWA Demo App für den SummIT 2016",
+  "background_color": "#673ab7",
+  "theme_color": "#673ab7",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "assets/appicons/icon-messages-app-27x20@1x.png",
+      "sizes": "27x20",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/appicons/144x144@2x.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/appicons/icon-messages-app-iPadAir-74x55@2x.png",
+      "sizes": "74x55",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/appicons/icon-messages-app-store-1024x768.png",
+      "sizes": "1024x768",
+      "type": "image/png"
+    }
+  ]
+}	
+					</code></pre>
 				</section>
 
 				<section>
-					app shell
+					<pre><code data-trim data-noescape>
+&lt;link rel="manifest" href="assets/webmanifest.json"&gt;</code></pre>
 				</section>
 
 				<section>
-					todo: random tone for web audio api
+					<img src="media/web-app-chrome.png" alt="">
 				</section>
 
-				
+				<section>
+					<video src="media/add-to-homescreen.webm" data-autoplay muted></video>
+				</section>
 
 				<section data-background-image="media/slide-bg.png">
 					<h1>Browser API</h1>
@@ -312,10 +339,9 @@ toolbox.precache(['/index.html', '/site.css', '/images/logo.png']);
 });</code></pre>
 				</section>
 
-				<section>
-					<h3>DeviceOrientation API</h3>
-					<div class="support-chart" data-feature="deviceOrientation">
-					</div>
+				<section  data-background-image="media/slide-bg.png">
+					<h1>DeviceOrientation API Support</h1>
+					<h2 class="support-counter" data-feature="deviceOrientation"></h2>
 				</section>
 
 				<section id="slide-deviceorientation">
@@ -333,8 +359,13 @@ toolbox.precache(['/index.html', '/site.css', '/images/logo.png']);
 					</ul>
 				</section>
 
+				<section  data-background-image="media/slide-bg.png">
+					<h2>Speech Synthesis API Support</h2>
+					<h2 class="support-counter" data-feature="speechSynthesis"></h2>
+				</section>
+
 				<section id="slide-speech">
-					<h2>Speech Synthesis API</h2>
+					<h2>Speech Synthesis DEMO</h2>
 					
 					Text: <input type="text" value="Das ist ein Test." id="speech-text"><br />
 					Pitch: <input type="number" value="1" id="speech-pitch"><br />
@@ -342,19 +373,118 @@ toolbox.precache(['/index.html', '/site.css', '/images/logo.png']);
 					<button id="start-speak" type="button">Senden</button>
 				</section>
 
+
 				<section>
 					<h2>WebAudio API</h2>
-					<button type="button" id="start-web-audio">Start WebAudio</button>
-					todo: button in pwa erstellen
+					<ul>
+						<li>Arbeiten mit Audio-Quellen (auch MIDI)</li>
+						<li>Audio-Quellen mit Effekten versehen</li>
+						<li>Synthesizer im Browser</li>
+					</ul>
 				</section>
 
 				<section  data-background-image="media/slide-bg.png">
-					<h1>Performance Tipps</h1>
+					<h2>WebAudio API Support</h2>
+					<h2 class="support-counter" data-feature="webAudio"></h2>
 				</section>
 
 				<section>
-					<h4>First Meaningful Paint Time</h4>
-					<img src="media/screenshots.png" alt="screenshots">
+					<h2>WebAudio API Demo</h2>
+					<button type="button" id="start-web-audio">Start WebAudio</button>
+				</section>
+
+				<!-- ---------------------------------------------------------------------------------------- -->
+
+				<section  data-background-image="media/slide-bg.png">
+					<h1>Angular 2 Tipps</h1>
+				</section>
+
+				<section>
+					<h2>Routing</h2>
+					<p>Bad pratice</p>
+					<pre><code data-trim>
+@NgModule({
+  declarations: [
+    AppComponent,
+    UsersListComponent,
+    InvoicesListComponent,
+    ...
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([
+      {path: '', component: HomepageComponent},
+      {path: '/users', component: UsersListComponent},
+      {path: '/invoices', component: InvoicesListComponent},
+    ])
+  ]
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+						</code></pre>
+				</section>
+
+				<section>
+					<h2>Routing - Lazy Loading</h2>
+					<p>loadChildren / Module verwenden</p>
+					<pre><code data-trim>
+@NgModule({
+  declarations: [
+    AppComponent, // nur das deklarieren, was initial benötigt wird
+    HomepageComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([
+      {path: '', component: HomepageComponent},
+      {path: '/users', loadChildren: './users/users.module#UsersModule'},
+      {path: '/invoices', loadChildren: './users/invoices.module#InvoicesModule'},
+    ])
+  ]
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+						</code></pre>
+				</section>
+
+				<section>
+					<h2>Router Idle Preload</h2>
+					<p>https://github.com/AngularClass/angular2-idle-preload</p>
+					<img src="media/angular2-idle-preload.jpeg" alt="">
+				</section>
+
+				<section>
+					<h2>Angular CLI nutzen</h2>
+					<ul>
+						<li>
+							Scaffolding und Buildsystem für Angular 2 Projekte
+						</li>
+						<li>Effizientes Bundling der Applikation</li>
+						<li>AOT Template Compiler Support
+							<ul>
+								<li>= schnellere Rendering Time</li>
+							</ul>
+						</li>
+						<li>https://cli.angular.io/</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular Universal</h2>
+					<p>https://universal.angular.io/</p>
+					<ul>
+						<li>Server-Side Rendering</li>
+						<li>Führt die App auf dem Server aus</li>
+						<li>Liefert generiertes HTML an den Browser</li>
+						<li>Support für Node.JS und ASP.NET (bald auch Java)</li>
+					</ul>
+					<img src="media/angular-universal.png" alt="">
+				</section>
+
+				<!-- ---------------------------------------------------------------------------------------- -->
+
+				<section data-background-image="media/slide-bg.png">
+					<h1>Performance Tipps</h1>
 				</section>
 
 				<section>
@@ -377,42 +507,23 @@ toolbox.precache(['/index.html', '/site.css', '/images/logo.png']);
 				</section>
 
 				<section>
-					<img src="media/lighthouse-cli.png" alt="">
-				</section>
-
-				<section>
 					<h3>HTTP/2 & GZip nutzen</h3>
 					<video src="media/http2.mov" class="stretch" data-autoplay></video>
 				</section>
 
 				<section>
-					250 kb Grenze
+					<h1>~250 kb</h1>
 				</section>
 
-				<section>
-					angular 2 router - lazy loading
-					preloading
-					AOT compilation
-				</section>
+				<!-- ---------------------------------------------- -->
 
 				<section>
-					App manifest
+					Abstimmbutton
 				</section>
 
-				<section>
-					splash scren
-				</section>
 				
-				<section>
-					service worker und Synchronisierung
-				</section>
-
-				<section>
-					AOT router und Angular CLI
-				</section>
-				
-				<section>
-					abstimmungs slide QR Code
+				<section data-background-image="media/slide-bg.png">
+					Vielen Dank!
 				</section>
 			</div>
 		</div>
@@ -427,7 +538,7 @@ toolbox.precache(['/index.html', '/site.css', '/images/logo.png']);
 
 				transition: 'none',
 				controls: false,
-				progress: false,
+				progress: true,
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
