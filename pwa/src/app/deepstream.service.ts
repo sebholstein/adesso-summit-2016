@@ -18,7 +18,8 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 export class DeepstreamService {
   client: any;
   username: string;
-  private _connectionState$: BehaviorSubject<string> = new BehaviorSubject('CLOSED')
+  private _connectionState$: BehaviorSubject<string> = new BehaviorSubject('CLOSED');
+  private _showVoteButton$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private _onConnect$: Observable<any> = new Observable();
   speechDialogRef: MdDialogRef<SpeechDialogComponent>;
   webAudioDialogRef: MdDialogRef<WebAudioDialogComponent>;
@@ -31,6 +32,10 @@ export class DeepstreamService {
     return this.username != null && this.username.length > 0; 
   }
 
+  get showVoteButton$(): Observable<boolean> {
+    return this._showVoteButton$.asObservable();
+  }
+
   connect(username: string = ''): Promise<any> {
     if (username != null && username.length > 0 && username !== this.username) {
       this.username = username;
@@ -40,13 +45,14 @@ export class DeepstreamService {
     if (environment.production) {
       protocol = 'wss://';
     }
-    console.info(`${protocol}${window.location.hostname}:6020`);
+    // console.info(`${protocol}${window.location.hostname}:6020`);
     this.client = deepstream(`${protocol}${window.location.hostname}:6020`);
     const creds = {username: this.username, password: '1234'};
     return new Promise((resolve) => {
       this.client.login(creds, () => {
         resolve(this.client);
         this._trackConnectionState();
+        this._trackVoteButton();
         this._publishBrowserDetails();
         if ('vibrate' in navigator) {
           this._vibrateListener();
@@ -62,6 +68,14 @@ export class DeepstreamService {
         }
       });
     })
+  }
+
+  private _trackVoteButton() {
+    this.client.record.getRecord('showVoteButton').whenReady((record: any) => {
+      record.subscribe('showButton', (data) => {
+        this._zone.run(() => this._showVoteButton$.next(data === true));
+      }, true);
+    });
   }
 
   private _trackConnectionState() {

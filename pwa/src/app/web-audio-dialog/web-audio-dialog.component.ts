@@ -1,3 +1,4 @@
+import { MdDialogRef } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,13 +6,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './web-audio-dialog.component.html',
   styleUrls: ['./web-audio-dialog.component.css']
 })
-export class WebAudioDialogComponent implements OnInit {
+export class WebAudioDialogComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-    
-  }
+  constructor(public dialogRef: MdDialogRef<WebAudioDialogComponent>) { }
 
   playSound() {
     let ctx;
@@ -38,11 +35,12 @@ export class WebAudioDialogComponent implements OnInit {
     oscillator.start(0);
     oscillator2.start(0);
     oscillator3.start(0);
+    this.dialogRef.close();
     setTimeout(() => {
       oscillator.stop();
       oscillator2.stop();
       oscillator3.stop();
-    }, 1500);
+    }, 2000);
   }
 
 }

@@ -17,6 +17,7 @@ class DeepstreamDemo {
     this._startDeviceOrientationWatcher();
     this._speechWatcher();
     this._webAudioWatcher();
+    this._voteWatcher();
   }
 
   _startUserCounterWatcher() {
@@ -36,6 +37,16 @@ class DeepstreamDemo {
       }
       this._updateUsersOnline();
       this._updateSupportStats();
+    })
+  }
+
+  _voteWatcher() {
+    let showButton = false;
+    document.querySelector('#toggle-vote-button').addEventListener('click', () => {
+      showButton = !showButton;
+      this.client.record.getRecord('showVoteButton').whenReady(r => {
+        r.set({showButton: showButton});
+      })
     })
   }
 

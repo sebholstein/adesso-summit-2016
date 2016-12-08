@@ -1,3 +1,9 @@
+<md-card *ngIf="(showVoteButton$ | async) === true" class="schedule-entry">
+  <md-card-content style="text-align:center">
+    <button md-raised-button (click)="vote()" color="primary" class="vote-button">😱 😱 😱 <strong>Abstimmen!</strong> 😱 😱 😱</button>
+  </md-card-content>
+</md-card>
+
 <md-card *ngFor="let entry of scheduleEntries" class="schedule-entry">
   <md-card-title-group>
     <md-card-title>{{ entry.title }}</md-card-title>
